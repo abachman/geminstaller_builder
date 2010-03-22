@@ -1,0 +1,3 @@
+require 'geminstaller_builder/geminstaller_file'
+class GeminstallerBuilder
+end

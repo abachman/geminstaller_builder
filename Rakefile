@@ -4,11 +4,11 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "geminstaller-builder"
+    gem.name = "geminstaller_builder"
     gem.summary = %Q{Generate valid geminstaller.yml files.}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.description = %Q{A tool for creating valid geminstaller.yml files. Handy with Rails templates.}
     gem.email = "adam.bachman@gmail.com"
-    gem.homepage = "http://github.com/abachman/geminstaller-builder"
+    gem.homepage = "http://github.com/abachman/geminstaller_builder"
     gem.authors = ["Adam Bachman"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
