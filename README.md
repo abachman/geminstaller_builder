@@ -39,10 +39,14 @@ Will create two files:
 
 relative to the directory from which the script was run.
 
-By default, the `:default` and `:test` environments are assumed. To change the names of the files generated, pass in a `:paths` option with the full filenames. For example:
+By default, the `:default` and `:test` environments are assumed. To change the
+names of the files generated, pass in a `:paths` option with the full
+filenames. For example:
 
     require 'geminstaller_builder'
-    geminstaller = GeminstallerBuilder.new :paths => {:default => 'geminstaller.yml', :test => 'geminstaller-test.yml'}
+    geminstaller = GeminstallerBuilder.new(
+      :paths => {:default => 'geminstaller.yml',
+                 :test => 'geminstaller-test.yml'})
     geminstaller.add 'haml'
     geminstaller.add 'state_machine'
     geminstaller.add 'shoulda', :test
@@ -59,6 +63,9 @@ Looks pretty much the same. I use it like this:
     # use geminstaller instead of gem
     require 'geminstaller_builder'
     @geminstaller = GeminstallerFile.new
+
+    # define helper method so that templates called via load_template will have
+    # access to @geminstaller.add without relying on the instance variable.
     def geminstaller s, env=:default
       @geminstaller.add s, env
     end
@@ -72,6 +79,9 @@ Looks pretty much the same. I use it like this:
 
     load_template 'http://github.com/smartlogic/rails-templates/raw/master/test.rb'
 
+    # finally ...
+    @geminstaller.save
+
 and in `test.rb`:
 
     geminstaller 'factory_girl', :test
@@ -83,11 +93,11 @@ and in `test.rb`:
 
     # etc...
 
-Finally, at the end of `template.rb`, I have:
-
-    @geminstaller.save
-
-at which point, geminstaller_build consults the currently available gems to build the appropriate geminstaller.yml files.
+Any number of templates can add gems to the collection. When
+`@geminstaller.save` is called, geminstaller_builder consults the currently
+available gems to build the appropriate geminstaller.yml files. The save
+command should probably wait until after all external templates have been
+loaded.
 
 ## Note on Patches/Pull Requests
 
