@@ -1,20 +1,30 @@
-require 'gem_helper'
+require 'geminstaller_builder/gem_helper'
 
 # Convert a list of gems into a valid geminstaller.yml file.
 class GeminstallerFile
   include GemHelper
-  def initialize env=nil
-    @gems = {:default => []}
-    @paths = {:default => "config/geminstaller.yml"}
-    %w(test staging production).each do |env|
-      @paths[env.to_sym] = "config/#{env}/geminstaller.yml"
-      @gems[env.to_sym] = []
-    end
+  def initialize options={}
+    options = {
+      :env => :default,
+      :gems => {
+        :default    => [],
+        :test       => []
+      },
+      :paths => {
+        :default    => "config/geminstaller.yml",
+        :test       => "config/test/geminstaller.yml"
+    }
+    }.merge(options)
+
+    @gems  = options[:gems]
+    @paths = options[:paths]
   end
 
   def add gem, env=:default
     @gems[env.to_sym] << gem
   end
+
+  alias_method :<<, :add
 
   def save
     puts "\e[34m[ Saving Gems ]\e[0m"

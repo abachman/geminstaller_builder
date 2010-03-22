@@ -23,7 +23,12 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
-     "test/helper.rb"
+     "geminstaller_builder.gemspec",
+     "lib/geminstaller_builder.rb",
+     "lib/geminstaller_builder/gem_helper.rb",
+     "lib/geminstaller_builder/geminstaller_file.rb",
+     "test/helper.rb",
+     "test/test_geminstaller_builder.rb"
   ]
   s.homepage = %q{http://github.com/abachman/geminstaller_builder}
   s.rdoc_options = ["--charset=UTF-8"]

@@ -16,6 +16,6 @@ module GemHelper
 
     # convert to yaml
     puts "found #{gem}"
-    "- name: #{gem.split(' ').first}\n  version: '= #{gem_version(gem)}'"
+    "- name: %s\n  version: '= %s'" % [gem.split(' ').first, gem_version(gem)]
   end
 end
