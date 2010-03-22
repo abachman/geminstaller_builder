@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{geminstaller_builder}
-  s.version = "0.1.0"
+  s.version = "0.1.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Adam Bachman"]
@@ -14,19 +14,18 @@ Gem::Specification.new do |s|
   s.email = %q{adam.bachman@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.rdoc"
+     "README.md"
   ]
   s.files = [
     ".document",
      ".gitignore",
      "LICENSE",
-     "README.rdoc",
+     "README.md",
      "Rakefile",
      "VERSION",
      "geminstaller_builder.gemspec",
      "lib/geminstaller_builder.rb",
      "lib/geminstaller_builder/gem_helper.rb",
-     "lib/geminstaller_builder/geminstaller_file.rb",
      "test/helper.rb",
      "test/test_geminstaller_builder.rb"
   ]
